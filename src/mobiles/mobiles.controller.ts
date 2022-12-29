@@ -1,15 +1,17 @@
 import { Controller, Get, Param } from '@nestjs/common';
+import { MobilesService } from './mobiles.service';
 
 @Controller('mobiles')
 export class MobilesController {
-  private phones = ['Xiaomi', 'Samsung', 'Apple'];
+  constructor(private readonly mobilesService: MobilesService) {}
+
   @Get()
   getAllPhones() {
-    return this.phones;
+    return this.mobilesService.findAll();
   }
 
   @Get('/:id')
   getPhonesById(@Param('id') id: string) {
-    return this.phones[id];
+    return this.mobilesService.findOneById(+id);
   }
 }
