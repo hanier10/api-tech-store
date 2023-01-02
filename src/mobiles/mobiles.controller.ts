@@ -8,8 +8,6 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
-  UsePipes,
-  ValidationPipe,
 } from '@nestjs/common';
 
 import { MobilesService } from './mobiles.service';
@@ -38,7 +36,7 @@ export class MobilesController {
   }
 
   @Post()
-  @UsePipes(ValidationPipe)
+  // @UsePipes(ValidationPipe)
   createMobile(@Body() createCardDto: CreateMobileDto) {
     return createCardDto;
   }
