@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   ParseIntPipe,
+  ParseUUIDPipe,
   Patch,
   Post,
 } from '@nestjs/common';
@@ -20,7 +21,15 @@ export class MobilesController {
   }
 
   @Get('/:id')
-  getPhonesById(@Param('id') id: string) {
+  getPhonesById(
+    @Param(
+      'id',
+      new ParseUUIDPipe({
+        version: '5',
+      }),
+    )
+    id: string,
+  ) {
     return this.mobilesService.findOneById(id);
   }
 
