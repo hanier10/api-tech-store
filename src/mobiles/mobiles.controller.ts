@@ -9,7 +9,9 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+
 import { MobilesService } from './mobiles.service';
+import { CreateMobileDto } from './dto/create-mobile.dto';
 
 @Controller('mobiles')
 export class MobilesController {
@@ -34,8 +36,8 @@ export class MobilesController {
   }
 
   @Post()
-  createMobile(@Body() body: any) {
-    return body;
+  createMobile(@Body() createCardDto: CreateMobileDto) {
+    return createCardDto;
   }
 
   @Patch('/:id')
