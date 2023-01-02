@@ -20,7 +20,7 @@ export class MobilesController {
   }
 
   @Get('/:id')
-  getPhonesById(@Param('id', ParseIntPipe) id: number) {
+  getPhonesById(@Param('id') id: string) {
     return this.mobilesService.findOneById(id);
   }
 

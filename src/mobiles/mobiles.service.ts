@@ -1,20 +1,23 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { v4 as uuid } from 'uuid';
+
+import { Mobile } from './interfaces/mobile.interface';
 
 @Injectable()
 export class MobilesService {
-  private mobiles = [
+  private mobiles: Mobile[] = [
     {
-      id: 1,
+      id: uuid(),
       brand: 'Xiaomi',
       model: 'Redmi',
     },
     {
-      id: 2,
+      id: uuid(),
       brand: 'Samsung',
       model: 'A',
     },
     {
-      id: 3,
+      id: uuid(),
       brand: 'Apple',
       model: '12 Pro Max',
     },
@@ -24,7 +27,7 @@ export class MobilesService {
     return this.mobiles;
   }
 
-  findOneById(id: number) {
+  findOneById(id: string) {
     const mobile = this.mobiles.find((mobile) => mobile.id === id);
     if (!mobile) {
       throw new NotFoundException(`Mobile with id '${id}' no fue encontrado`);
