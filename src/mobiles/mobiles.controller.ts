@@ -11,7 +11,8 @@ import {
 } from '@nestjs/common';
 
 import { MobilesService } from './mobiles.service';
-import { CreateMobileDto } from './dto/create-mobile.dto';
+
+import { CreateMobileDto, UpdateMobileDto } from './dto/index';
 
 @Controller('mobiles')
 export class MobilesController {
@@ -42,12 +43,15 @@ export class MobilesController {
   }
 
   @Patch('/:id')
-  updateMobile(@Body() body: any) {
-    return body;
+  updateMobile(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateMobileDto: UpdateMobileDto,
+  ) {
+    return updateMobileDto;
   }
 
   @Delete('/:id')
-  deleteCar(@Param('id', ParseIntPipe) id: number) {
+  deleteCar(@Param('id', ParseUUIDPipe) id: string) {
     return {
       method: 'delete',
       id,
