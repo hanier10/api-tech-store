@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 
 import { Mobile } from './interfaces/mobile.interface';
+import { CreateMobileDto } from './dto/create-mobile.dto';
 
 @Injectable()
 export class MobilesService {
@@ -32,6 +33,17 @@ export class MobilesService {
     if (!mobile) {
       throw new NotFoundException(`Mobile with id '${id}' no fue encontrado`);
     }
+    return mobile;
+  }
+
+  create(CreateMobileDto: CreateMobileDto) {
+    const mobile: Mobile = {
+      id: uuid(),
+      ...CreateMobileDto,
+    };
+
+    this.mobiles.push(mobile);
+
     return mobile;
   }
 }

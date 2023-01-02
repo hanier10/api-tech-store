@@ -37,8 +37,8 @@ export class MobilesController {
 
   @Post()
   // @UsePipes(ValidationPipe)
-  createMobile(@Body() createCardDto: CreateMobileDto) {
-    return createCardDto;
+  createMobile(@Body() createMobileDto: CreateMobileDto) {
+    return this.mobilesService.create(createMobileDto);
   }
 
   @Patch('/:id')
