@@ -47,7 +47,7 @@ export class MobilesController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() updateMobileDto: UpdateMobileDto,
   ) {
-    return updateMobileDto;
+    return this.mobilesService.update(id, updateMobileDto);
   }
 
   @Delete('/:id')
