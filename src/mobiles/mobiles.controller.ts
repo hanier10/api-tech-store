@@ -51,10 +51,7 @@ export class MobilesController {
   }
 
   @Delete('/:id')
-  deleteCar(@Param('id', ParseUUIDPipe) id: string) {
-    return {
-      method: 'delete',
-      id,
-    };
+  deleteMobile(@Param('id', ParseUUIDPipe) id: string) {
+    return this.mobilesService.delete(id);
   }
 }

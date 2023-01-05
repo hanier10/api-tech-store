@@ -73,4 +73,9 @@ export class MobilesService {
 
     return mobileDB;
   }
+
+  delete(id: string) {
+    const mobile = this.findOneById(id);
+    this.mobiles = this.mobiles.filter((mobile) => mobile.id !== id);
+  }
 }
