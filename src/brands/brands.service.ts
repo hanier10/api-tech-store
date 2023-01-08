@@ -5,6 +5,7 @@ import { Brand } from './entities/brand.entity';
 
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';
+import { Mobile } from 'src/mobiles/interfaces/mobile.interface';
 
 @Injectable()
 export class BrandsService {
@@ -58,5 +59,9 @@ export class BrandsService {
   remove(id: string) {
     this.brands = this.brands.filter((brand) => brand.id !== id);
     return 'archivo eliminado exitosamente';
+  }
+
+  fillMobilesWithSeedData(brands: Brand[]) {
+    this.brands = brands;
   }
 }

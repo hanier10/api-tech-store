@@ -78,4 +78,8 @@ export class MobilesService {
     const mobile = this.findOneById(id);
     this.mobiles = this.mobiles.filter((mobile) => mobile.id !== id);
   }
+
+  fillMobilesWithSeedData(mobiles: Mobile[]) {
+    this.mobiles = mobiles;
+  }
 }
